@@ -1,0 +1,262 @@
+.top-bar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #2c3840;
+  height: 75px;
+  margin-bottom: 42px;
+}
+
+.top-bar .top-bar-logo {
+  padding: 0.9rem;
+}
+
+.top-bar li {
+  background: #2c3840;
+}
+
+.top-bar a {
+  color: #fefefe;
+  transition: color 0.2s ease-in;
+}
+
+.top-bar a:hover {
+  color: #a8b8c3;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .top-bar {
+    height: 53.57143px;
+  }
+}
+
+.top-bar .offcanvas-trigger {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.6rem;
+  color: #fefefe;
+  text-transform: uppercase;
+  background-color: #566d7c;
+  transition: background-color 0.2s ease-in;
+  cursor: pointer;
+}
+
+.top-bar .offcanvas-trigger .offcanvas-trigger-text {
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.top-bar .offcanvas-trigger:hover {
+  background-color: #6b879a;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .top-bar .offcanvas-trigger {
+    padding: 0.9rem;
+  }
+}
+
+top-bar, .top-bar ul {
+  background: #222b31;
+}
+
+.multilevel-offcanvas {
+  background: #222b31;
+  padding: 20px;
+  color: #fefefe;
+}
+
+.multilevel-offcanvas > .menu {
+  margin-bottom: 1rem;
+}
+
+.multilevel-offcanvas .menu a {
+  color: rgba(254, 254, 254, 0.6);
+  padding-top: 7px;
+  padding-bottom: 7px;
+  transition: color 0.2s ease-in;
+}
+
+.multilevel-offcanvas .menu a:hover {
+  color: #fefefe;
+}
+
+.multilevel-offcanvas .fa {
+  color: #fefefe;
+}
+
+.multilevel-offcanvas .is-accordion-submenu-parent > a::after {
+  border-color: rgba(254, 254, 254, 0.6) transparent transparent;
+}
+
+.multilevel-offcanvas .social-links {
+  margin-left: 20px;
+}
+
+.multilevel-offcanvas .social-links li {
+  margin-right: 5px;
+}
+
+.multilevel-offcanvas .social-links a:hover .fa {
+  color: #bebebe;
+  transition: color .2s ease-in;
+}
+
+.multilevel-offcanvas .social-links .fa {
+  font-size: 2.2rem;
+}
+
+.is-open + .off-canvas-content .hamburger .line:nth-child(1),
+.is-open + .off-canvas-content .hamburger .line:nth-child(3) {
+  width: 12px;
+}
+
+.is-open + .off-canvas-content .hamburger .line:nth-child(1) {
+  -webkit-transform: translateX(-5px) rotate(-45deg);
+      -ms-transform: translateX(-5px) rotate(-45deg);
+          transform: translateX(-5px) rotate(-45deg);
+}
+
+.is-open + .off-canvas-content .hamburger .line:nth-child(3) {
+  -webkit-transform: translateX(-5px) rotate(45deg);
+      -ms-transform: translateX(-5px) rotate(45deg);
+          transform: translateX(-5px) rotate(45deg);
+}
+
+.hamburger .line {
+  width: 20px;
+  height: 2px;
+  background-color: #fefefe;
+  display: block;
+  margin: 3px auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger .line:last-child {
+  margin-bottom: 0;
+}
+/*
+#breadcrumb-container {
+  border: solid 1px white;
+}
+*/
+#breadcrumb {
+  background: #222b31;
+  padding: 10px;
+  color: #fefefe;
+}
+
+#breadcrumb ul {
+  margin: 0;
+}
+
+.breadcrumb {
+  list-style: none;
+  overflow: hidden;
+  /*font: 18px Sans-Serif;*/
+}
+.breadcrumb li {
+  float: left;
+}
+
+.breadcrumb li a {
+  color: #4091ff;
+}
+
+.breadcrumb li.disabled a {
+  color: #fefefe;
+}
+
+.breadcrumb li:last-child a {
+  color: #ffd040;
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 1.1rem 2rem 1.1rem 3rem;
+  background: #ffd040; /* fallback color */
+  background: hsla(45,100%,63%,1);
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.breadcrumb li a::after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid hsla(45,100%,63%,1);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 100%;
+  z-index: 2;
+}
+
+.breadcrumb li a::before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1;
+}
+
+.breadcrumb li:first-child a {
+  padding-left: 10px;
+}
+.breadcrumb li:nth-last-child(2) a       { background:        hsla(45,100%,56%,1); }
+.breadcrumb li:nth-last-child(2) a:after { border-left-color: hsla(45,100%,56%,1); }
+.breadcrumb li:nth-last-child(3) a       { background:        hsla(45,100%,48%,1); }
+.breadcrumb li:nth-last-child(3) a:after { border-left-color: hsla(45,100%,48%,1); }
+.breadcrumb li:nth-last-child(4) a       { background:        hsla(45,100%,44%,1); }
+.breadcrumb li:nth-last-child(4) a:after { border-left-color: hsla(45,100%,44%,1); }
+.breadcrumb li:nth-last-child(5) a       { background:        hsla(45,100%,40%,1); }
+.breadcrumb li:nth-last-child(5) a:after { border-left-color: hsla(45,100%,40%,1); }
+.breadcrumb li:nth-last-child(6) a       { background:        hsla(45,100%,36%,1); }
+.breadcrumb li:nth-last-child(6) a:after { border-left-color: hsla(45,100%,36%,1); }
+.breadcrumb li:nth-last-child(7) a       { background:        hsla(45,100%,32%,1); }
+.breadcrumb li:nth-last-child(7) a:after { border-left-color: hsla(45,100%,32%,1); }
+.breadcrumb li:nth-last-child(8) a       { background:        hsla(45,100%,28%,1); }
+.breadcrumb li:nth-last-child(8) a:after { border-left-color: hsla(45,100%,28%,1); }
+.breadcrumb li:last-child a {
+  background: #ffd040 !important;
+  color: black;
+  pointer-events: none;
+  cursor: default;
+}
+.breadcrumb li:last-child a::after {
+  border: 0;
+}
+
+.breadcrumb li a:hover {
+  background: hsla(45,100%,63%, 1);
+}
+.breadcrumb li a:hover:after {
+  border-left-color: hsla(45,100%,63%, 1) !important;
+}
