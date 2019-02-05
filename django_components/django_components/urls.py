@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import DetailView
 
-from component.models import Screen
+from screen.models import Screen
 
 
 if settings.DEBUG:

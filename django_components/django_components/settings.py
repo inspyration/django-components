@@ -55,7 +55,9 @@ INTERNAL_IPS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     # Custom
-    "component",
+    "menu.apps.MenuConfig",
+    "screen.apps.ScreenConfig",
+    "component.apps.ComponentConfig",
     # Third libraries
     "modeltranslation",
     # Default

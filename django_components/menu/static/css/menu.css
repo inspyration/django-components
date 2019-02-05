@@ -1,0 +1,156 @@
+.top-bar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #2c3840;
+  height: 75px;
+  margin-bottom: 42px;
+}
+
+.top-bar .top-bar-logo {
+  padding: 0.9rem;
+}
+
+.top-bar li {
+  background: #2c3840;
+}
+
+.top-bar a {
+  color: #4091ff;
+  transition: color 0.2s ease-in;
+}
+
+.top-bar a:hover {
+  color: #ffd040;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .top-bar {
+    height: 53.57143px;
+  }
+}
+
+.top-bar .offcanvas-trigger {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1.6rem;
+  color: #ffd040;
+  text-transform: uppercase;
+  background-color: #3a82e6;
+  text-shadow: 2px 2px #000;
+  transition: background-color 0.2s ease-in;
+  cursor: pointer;
+}
+
+.top-bar .offcanvas-trigger .offcanvas-trigger-text {
+  margin-right: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.top-bar .offcanvas-trigger:hover {
+  background-color: #4091ff;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .top-bar .offcanvas-trigger {
+    padding: 0.9rem;
+  }
+}
+
+top-bar, .top-bar ul {
+  background: #222b31;
+}
+
+.multilevel-offcanvas {
+  background: #222b31;
+  padding: 20px;
+  color: #fefefe;
+}
+
+.multilevel-offcanvas > .menu {
+  margin-bottom: 1rem;
+}
+
+.multilevel-offcanvas .menu a {
+  color: #4091ff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  transition: color 0.2s ease-in;
+  border: 1px solid #ffd040;
+}
+
+.multilevel-offcanvas .menu a:hover {
+  color: #ffd040;
+  border: 1px solid #4091ff;
+}
+
+.multilevel-offcanvas .fa {
+  color: #fefefe;
+}
+
+.multilevel-offcanvas .is-accordion-submenu-parent > a::after {
+  border-color: rgba(254, 254, 254, 0.6) transparent transparent;
+}
+
+.multilevel-offcanvas .social-links {
+  margin-left: 20px;
+}
+
+.multilevel-offcanvas .social-links li {
+  margin-right: 5px;
+}
+
+.multilevel-offcanvas .social-links a:hover .fa {
+  color: #bebebe;
+  transition: color .2s ease-in;
+}
+
+.multilevel-offcanvas .social-links .fa {
+  font-size: 2.2rem;
+}
+
+.is-open + .off-canvas-content .hamburger .line:nth-child(1),
+.is-open + .off-canvas-content .hamburger .line:nth-child(3) {
+  width: 12px;
+}
+
+.is-open + .off-canvas-content .hamburger .line:nth-child(1) {
+  -webkit-transform: translateX(-5px) rotate(-45deg);
+      -ms-transform: translateX(-5px) rotate(-45deg);
+          transform: translateX(-5px) rotate(-45deg);
+}
+
+.is-open + .off-canvas-content .hamburger .line:nth-child(3) {
+  -webkit-transform: translateX(-5px) rotate(45deg);
+      -ms-transform: translateX(-5px) rotate(45deg);
+          transform: translateX(-5px) rotate(45deg);
+}
+
+.hamburger .line {
+  width: 20px;
+  height: 2px;
+  background-color: #ffd040;
+  text-shadow: 2px 2px #000;
+  display: block;
+  margin: 3px auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger .line:last-child {
+  margin-bottom: 0;
+}

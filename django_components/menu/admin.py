@@ -1,26 +1,26 @@
 """Admin IHM"""
 
 
-from django.contrib.admin import ModelAdmin, StackedInline
+from django.contrib.admin import ModelAdmin
 from django.contrib.admin.decorators import register
 
-from component.models import Component
+from menu.models import MenuItem
 
 
-@register(Component)
-class ComponentAdmin(ModelAdmin):
+@register(MenuItem)
+class MenuItemAdmin(ModelAdmin):
     """
-    ## Component admin IHM
+    ## MenuItem admin IHM
 
     This object should'nt be created or modified here (as long as the proof of concept has been validated).
     """
 
-    model = Component
-    fields = ("view_class", "content_type", "name", "path", "kwargs")
-    list_display = ("view_class", "content_type", "name", "path")
-    search_fields = ("view_class", "content_type", "name", "path")
-    list_filter = ("view_class", "content_type")
-    list_display_links = ("name",)
+    model = MenuItem
+    fields = ("parent", "screen", "title", "icon")
+    list_display = ("parent", "screen", "title", "icon")
+    search_fields = ("parent__title", "screen__title", "title")
+    list_filter = ("parent", "screen", "child_set")
+    list_display_links = ("title",)
 
     def has_module_permission(self, request):
         """Can be accessed from home page"""

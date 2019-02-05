@@ -4,23 +4,34 @@
 from django.contrib.admin import ModelAdmin, StackedInline
 from django.contrib.admin.decorators import register
 
-from component.models import Component
+from screen.models import Screen, Layout
 
 
-@register(Component)
-class ComponentAdmin(ModelAdmin):
+class LayoutInline(StackedInline):
+    """Layout inline class"""
+
+    model = Layout
+    fields = ("component", "block", "order")
+    readonly_fields = ()
+    min_num = 1
+    extra = 0
+
+
+@register(Screen)
+class ScreenAdmin(ModelAdmin):
     """
-    ## Component admin IHM
+    ## Screen admin IHM
 
     This object should'nt be created or modified here (as long as the proof of concept has been validated).
     """
 
-    model = Component
-    fields = ("view_class", "content_type", "name", "path", "kwargs")
-    list_display = ("view_class", "content_type", "name", "path")
-    search_fields = ("view_class", "content_type", "name", "path")
-    list_filter = ("view_class", "content_type")
-    list_display_links = ("name",)
+    model = Screen
+    fields = ("comprehensive", "title", "icon", "hide_in_sitemap")
+    list_display = ("comprehensive", "title", "icon")
+    search_fields = ("parent__title", "comprehensive__title", "title")
+    list_filter = ("comprehensive", "specific_set")
+    list_display_links = ("title",)
+    inlines = [LayoutInline]
 
     def has_module_permission(self, request):
         """Can be accessed from home page"""

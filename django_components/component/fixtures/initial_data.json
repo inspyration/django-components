@@ -1,0 +1,32 @@
+[
+  {
+    "model": "component.component",
+    "fields": {
+      "name": "backoffice_index",
+      "view_class": "django.views.generic.TemplateView",
+      "content_type": null,
+      "path": "backoffice/index/",
+      "kwargs": {
+        "template_name": "backoffice/index.html"
+      }
+    }
+  },
+  {
+    "model": "component.component",
+    "fields": {
+      "name": "component_list",
+      "view_class": "django.views.generic.ListView",
+      "content_type": ["component", "component"],
+      "path": "component/"
+    }
+  },
+  {
+    "model": "component.component",
+    "fields": {
+      "name": "component_detail",
+      "view_class": "django.views.generic.DetailView",
+      "content_type": ["component", "component"],
+      "path": "component/<int:pk>/"
+    }
+  }
+]

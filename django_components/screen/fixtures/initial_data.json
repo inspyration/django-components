@@ -1,0 +1,46 @@
+[
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$120000$10s7SeFAsALy$/Iwjs9BSvyU04pmB+G8aFL7xogsPZhBzy+3cMrbbm5s=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-02-05T21:06:32.394Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "screen.screen",
+    "fields": {
+      "comprehensive": null,
+      "title": "Test",
+      "icon": "x",
+      "hide_in_sitemap": false
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Test"],
+      "component": ["backoffice_index"],
+      "block": "page",
+      "order": 1
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Test"],
+      "component": ["component_list"],
+      "block": "main",
+      "order": 1
+    }
+  }
+]
