@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     # Custom
     "menu.apps.MenuConfig",
     "screen.apps.ScreenConfig",
+    "template.apps.TemplateConfig",
     "component.apps.ComponentConfig",
     # Third libraries
     "modeltranslation",

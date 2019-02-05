@@ -1,0 +1,144 @@
+[
+  {
+    "model": "template.htmltag",
+    "fields": {
+      "label": "meta"
+    }
+  },
+  {
+    "model": "template.htmltag",
+    "fields": {
+      "label": "link"
+    }
+  },
+  {
+    "model": "template.htmltag",
+    "fields": {
+      "label": "script"
+    }
+  },
+  {
+    "model": "template.htmltag",
+    "fields": {
+      "label": "img"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "all"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie6"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie7"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie67"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie8"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie678"
+    }
+  },
+  {
+    "model": "template.browser",
+    "fields": {
+      "label": "ie9"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "Foundation CSS Framework",
+      "tag": ["link"],
+      "browser": ["all"],
+      "path": "css/foundation.css"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "Foundation App specifics",
+      "tag": ["link"],
+      "browser": ["all"],
+      "path": "css/app.css"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "jQuery Framework",
+      "tag": ["script"],
+      "browser": ["all"],
+      "path": "js/vendor/jquery.js"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "What input Framework",
+      "tag": ["script"],
+      "browser": ["all"],
+      "path": "js/vendor/what-input.js"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "Foundation JS Framework",
+      "tag": ["script"],
+      "browser": ["all"],
+      "path": "js/vendor/foundation.js"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "Foundation launcher",
+      "tag": ["script"],
+      "browser": ["all"],
+      "path": "css/app.css"
+    }
+  },
+  {
+    "model": "template.template",
+    "fields": {
+      "label": "Foundation template",
+      "component": ["backoffice_index"],
+      "resource_set": [
+        ["Foundation CSS Framework"],
+        ["Foundation App specifics"],
+        ["jQuery Framework"],
+        ["What input Framework"],
+        ["Foundation JS Framework"],
+        ["Foundation launcher"]
+      ],
+      "keyword_set": []
+    }
+  }
+]
