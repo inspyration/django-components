@@ -1,0 +1,87 @@
+[
+  {
+    "model": "menu.menuitem",
+    "fields": {
+
+      "parent": null,
+      "screen": null,
+      "label": "ihm",
+      "icon": "x1"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+
+      "parent": [null, "ihm"],
+      "screen": [null, "Component list"],
+      "label": "component",
+      "icon": "x2"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+
+      "parent": [null, "ihm"],
+      "screen": null,
+      "label": "screen",
+      "icon": "x3"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+
+      "parent": [null, "ihm"],
+      "screen": null,
+      "label": "template",
+      "icon": "x4"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+      "parent": [null, "ihm"],
+      "screen": null,
+      "label": "references",
+      "icon": "x5"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+      "parent": ["ihm", "references"],
+      "screen": null,
+      "label": "keyword",
+      "icon": "x6"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+      "parent": ["ihm", "references"],
+      "screen": null,
+      "label": "htmltag",
+      "icon": "x7"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+      "parent": ["ihm", "references"],
+      "screen": null,
+      "label": "browser",
+      "icon": "x8"
+    }
+  },
+  {
+    "model": "menu.menuitem",
+    "fields": {
+      "parent": ["ihm", "references"],
+      "screen": null,
+      "label": "httpresource",
+      "icon": "x9"
+    }
+  }
+]

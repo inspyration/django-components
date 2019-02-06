@@ -41,8 +41,8 @@ class MenuItem(Model):
         on_delete=CASCADE,
     )
 
-    title = CharField(
-        verbose_name=_("screen title"),
+    label = CharField(
+        verbose_name=_("menu label"),
         help_text=_("used in the menu when fully deployed"),
         max_length=127,
         blank=False,
@@ -59,7 +59,7 @@ class MenuItem(Model):
     )
 
     def __str__(self):
-        return self.title
+        return self.label
 
     class Meta:  # pylint: disable=too-few-public-methods
         """MenuItem Meta class"""
@@ -68,11 +68,11 @@ class MenuItem(Model):
         verbose_name_plural = _("menu items")
         index_together = (
             ("parent", "screen"),
-            ("parent", "screen", "title"),
-            ("screen", "title"),
+            ("parent", "screen", "label"),
+            ("screen", "label"),
             ("screen", "icon"),
         )
         unique_together = (
-            ("parent", "title"),
+            ("parent", "label"),
             ("parent", "icon"),
         )

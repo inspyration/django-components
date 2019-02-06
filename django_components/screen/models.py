@@ -17,6 +17,17 @@ class Screen(Model):
 
     objects = ScreenManager()
 
+    parent = ForeignKey(
+        verbose_name=_("parent"),
+        related_name="child_set",
+        help_text=_("parent menu item"),
+        to="self",
+        null=True,
+        blank=True,
+        db_index=True,
+        on_delete=CASCADE,
+    )
+
     comprehensive = ForeignKey(
         verbose_name=_("overloaded screen"),
         related_name="specific_set",
@@ -28,13 +39,12 @@ class Screen(Model):
         on_delete=CASCADE,
     )
 
-    title = CharField(
-        verbose_name=_("screen title"),
+    label = CharField(
+        verbose_name=_("screen label"),
         help_text=_("used in html head and H1 (you can use templating language)"),
         max_length=127,
         blank=False,
         db_index=True,
-        unique=True,
     )
 
     icon = CharField(  # Debatable
@@ -56,7 +66,7 @@ class Screen(Model):
     )
 
     def __str__(self):
-        return self.title
+        return self.label
 
     def render_components(self):
         result = defaultdict(list)
@@ -73,7 +83,12 @@ class Screen(Model):
         verbose_name = _("screen")
         verbose_name_plural = _("screens")
         index_together = (
-            ("comprehensive", "title"),
+            ("parent", "label"),
+            ("comprehensive", "label"),
+            ("parent", "comprehensive", "label"),
+        )
+        unique_together = (
+            ("parent", "label"),
         )
 
 
@@ -115,7 +130,7 @@ class Layout(Model):
     )
 
     def __str__(self):
-        return "{} <<< {}".format(self.screen.title, self.component.name)
+        return "{} <<< {}".format(self.screen.label, self.component.name)
 
     class Meta:  # pylint: disable=too-few-public-methods
         """Layout Meta class"""

@@ -2,7 +2,7 @@
   {
     "model": "component.component",
     "fields": {
-      "name": "backoffice_index",
+      "label": "backoffice_index",
       "view_class": "django.views.generic.TemplateView",
       "content_type": null,
       "path": "backoffice/index/",
@@ -14,7 +14,7 @@
   {
     "model": "component.component",
     "fields": {
-      "name": "component_list",
+      "label": "component_list",
       "view_class": "django.views.generic.ListView",
       "content_type": ["component", "component"],
       "path": "component/"
@@ -23,7 +23,7 @@
   {
     "model": "component.component",
     "fields": {
-      "name": "component_detail",
+      "label": "component_detail",
       "view_class": "django.views.generic.DetailView",
       "content_type": ["component", "component"],
       "path": "component/<int:pk>/"

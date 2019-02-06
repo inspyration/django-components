@@ -19,8 +19,9 @@
   {
     "model": "screen.screen",
     "fields": {
+      "parent": null,
       "comprehensive": null,
-      "title": "Test",
+      "label": "Component list",
       "icon": "x",
       "hide_in_sitemap": false
     }
@@ -28,7 +29,7 @@
   {
     "model": "screen.layout",
     "fields": {
-      "screen": ["Test"],
+      "screen": [null, "Component list"],
       "component": ["backoffice_index"],
       "block": "page",
       "order": 1
@@ -37,8 +38,36 @@
   {
     "model": "screen.layout",
     "fields": {
-      "screen": ["Test"],
+      "screen": [null, "Component list"],
       "component": ["component_list"],
+      "block": "main",
+      "order": 1
+    }
+  },
+  {
+    "model": "screen.screen",
+    "fields": {
+      "parent": [null, "Component list"],
+      "comprehensive": null,
+      "label": "Component detail",
+      "icon": "x",
+      "hide_in_sitemap": false
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Component list", "Component detail"],
+      "component": ["backoffice_index"],
+      "block": "page",
+      "order": 1
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Component list", "Component detail"],
+      "component": ["component_detail"],
       "block": "main",
       "order": 1
     }

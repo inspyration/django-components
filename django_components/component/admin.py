@@ -16,11 +16,11 @@ class ComponentAdmin(ModelAdmin):
     """
 
     model = Component
-    fields = ("view_class", "content_type", "name", "path", "kwargs")
-    list_display = ("view_class", "content_type", "name", "path")
-    search_fields = ("view_class", "content_type", "name", "path")
+    fields = ("view_class", "content_type", "label", "path", "kwargs")
+    list_display = ("view_class", "content_type", "label", "path")
+    search_fields = ("view_class", "content_type", "label", "path")
     list_filter = ("view_class", "content_type")
-    list_display_links = ("name",)
+    list_display_links = ("label",)
 
     def has_module_permission(self, request):
         """Can be accessed from home page"""

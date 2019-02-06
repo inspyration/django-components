@@ -5,7 +5,7 @@
                 <tr>
                   <th>Type</th>
                   <th>Content type</th>
-                  <th>Name</th>
+                  <th>Label</th>
                   <th>Path</th>
                   <th></th>
                 </tr>
@@ -15,7 +15,7 @@
                 <tr>
                   <td>{{ o.view_class }}</td>
                   <td>{{ o.content_type }}</td>
-                  <td>{{ o.name }}</td>
+                  <td>{{ o.label }}</td>
                   <td>{{ o.path }}</td>
                   <td><a href="{% url 'component_detail' o.pk %}">Detail</a></td>
                 </tr>

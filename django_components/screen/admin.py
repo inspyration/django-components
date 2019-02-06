@@ -26,11 +26,11 @@ class ScreenAdmin(ModelAdmin):
     """
 
     model = Screen
-    fields = ("comprehensive", "title", "icon", "hide_in_sitemap")
-    list_display = ("comprehensive", "title", "icon")
-    search_fields = ("parent__title", "comprehensive__title", "title")
+    fields = ("comprehensive", "label", "icon", "hide_in_sitemap")
+    list_display = ("comprehensive", "label", "icon")
+    search_fields = ("parent__label", "comprehensive__label", "label")
     list_filter = ("comprehensive", "specific_set")
-    list_display_links = ("title",)
+    list_display_links = ("label",)
     inlines = [LayoutInline]
 
     def has_module_permission(self, request):

@@ -16,11 +16,11 @@ class MenuItemAdmin(ModelAdmin):
     """
 
     model = MenuItem
-    fields = ("parent", "screen", "title", "icon")
-    list_display = ("parent", "screen", "title", "icon")
-    search_fields = ("parent__title", "screen__title", "title")
+    fields = ("parent", "screen", "label", "icon")
+    list_display = ("parent", "screen", "label", "icon")
+    search_fields = ("parent__label", "screen__label", "label")
     list_filter = ("parent", "screen", "child_set")
-    list_display_links = ("title",)
+    list_display_links = ("label",)
 
     def has_module_permission(self, request):
         """Can be accessed from home page"""

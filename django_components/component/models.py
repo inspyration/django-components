@@ -21,9 +21,9 @@ class Component(Model):
 
     objects = ComponentManager()
 
-    # This is the name used by reverse to get to this component view.
-    name = CharField(
-        verbose_name=_("name"),
+    # This is the label used by reverse to get to this component view.
+    label = CharField(
+        verbose_name=_("label"),
         max_length=16,
         unique=True,
         blank=False,
@@ -31,7 +31,7 @@ class Component(Model):
         db_index=True,
     )
 
-    # The type is the name a subclass of django View
+    # The type is the label a subclass of django View
     view_class = CharField(
         verbose_name=_("Class-based view"),
         max_length=64,
@@ -68,7 +68,7 @@ class Component(Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.label
 
     def get_view_kwargs(self, **kwargs):
         if self.content_type:
@@ -97,7 +97,7 @@ class Component(Model):
 
     @property
     def url_pattern(self):
-        return path(self.path, self.view, name=self.name)
+        return path(self.path, self.view, name=self.label)
 
     def render(self, screen, **context):
         # Create a dummy request:
@@ -105,7 +105,7 @@ class Component(Model):
         request.method = "GET"
         # Render the view:
         if context:
-            request.path = reverse(self.name, kwargs=context)
+            request.path = reverse(self.label, kwargs=context)
             # import pdb; pdb.set_trace()
         context["screen"] = screen
         response = self.view(request, **context)
@@ -117,6 +117,6 @@ class Component(Model):
 
         verbose_name = _("component")
         verbose_name_plural = _("components")
-        index_together=(
+        index_together = (
             ("view_class", "content_type"),
         )
