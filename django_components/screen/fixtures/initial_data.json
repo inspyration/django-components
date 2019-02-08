@@ -31,15 +31,6 @@
     "model": "screen.layout",
     "fields": {
       "screen": [null, "Component list"],
-      "component": ["backoffice_index"],
-      "block": "page",
-      "order": 1
-    }
-  },
-  {
-    "model": "screen.layout",
-    "fields": {
-      "screen": [null, "Component list"],
       "component": ["component_list"],
       "block": "main",
       "order": 1
@@ -54,15 +45,6 @@
       "icon": "x",
       "hide_in_sitemap": false,
       "template": ["Foundation template"]
-    }
-  },
-  {
-    "model": "screen.layout",
-    "fields": {
-      "screen": ["Component list", "Component detail"],
-      "component": ["backoffice_index"],
-      "block": "page",
-      "order": 1
     }
   },
   {
