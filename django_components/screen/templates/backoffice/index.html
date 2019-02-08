@@ -4,6 +4,7 @@
       <div class="multilevel-offcanvas off-canvas position-left" id="offCanvasLeft" data-off-canvas>
 
         <ul class="vertical menu" data-accordion-menu>
+          
           <li>
             <a href="#">SERVICES</a>
             <ul class="menu vertical nested">
@@ -31,7 +32,7 @@
         </ul>
         <ul class="vertical menu">
           <li class="off-canvas-menu-item"><a href="#">Tour</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="/accounts/login/">Login</a></li>
           <li><a href="#">Register</a></li>
           <li><a href="#">Pricing</a></li>
           <li><a href="#">Support</a></li>
@@ -84,7 +85,11 @@
               <ul class="menu">
                 {% component screen "tools" %}
                 <li class="hide-for-small-only"><a href="#">TOUR</a></li>
-                <li class="hide-for-small-only"><a href="#">LOGIN</a></li>
+                {% if user.is_authenticated %}
+                  <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+                    {% else %}
+                      <li class="hide-for-small-only"><a href="/accounts/login/">LOGIN</a></li> 
+                    {% endif %}
               </ul>
             </div>
           </div>

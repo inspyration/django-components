@@ -1,0 +1,17 @@
+29e73b1544eb94e2e5b31943b6d96dab18ef7037 322
+3994d979738cf2924fd80cff3d54f72bf6425e89 o allows-empty-string-in-pre-init
+e3e0defa99862f8298cf3c08b1dd257df4105c95 c ascii-error
+f350c0e72fd2c35999062b85d571c490739e531b o custom-db-type
+b8e59b0ba9078fac87e2752d9a1a887205e053d8 o custom-lookups
+558d16c58beb61fbbc3c44f871dbd9e9f7ce328f c default
+29e73b1544eb94e2e5b31943b6d96dab18ef7037 o default
+a61d00337f942c7164d4fb07ef62e5b6b6ac3be9 o django2.0-compat
+cf92d50a0111278b284b3acef2709b3772ca3ee4 c field-validation-error
+1c3ab7f77585d28952d350e10fb6af89e97f2d1e c fix-xss-jsonify
+019234115a74fee5bd8632040be43b67dbdb55d8 o get-rid-of-subfieldbase
+cb01119557930aaa3a7ac1776fb2453cd4b4190c o get-rid-of-subfieldbase
+7a7d1752c64332836d7b9bec57de182ae54dffa6 o init_tidy
+6fd40e0e94520446eea2f7f85d2340c0303359aa o ordered-dict
+5c1bea74b03a717c2cac8d931c86d8e9a7c3c5be c schinckel/import-six-from-djangoutils-1457304253922
+3d2d8f77049cc231f2b0c200550b5ab7fc9c2a49 c simplejson
+86f368675893f6bedfa3c2cecfffcca8f168c877 c sub-field-base-removal
