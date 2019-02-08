@@ -32,43 +32,50 @@
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie"
+      "label": "ie",
+      "condition": "IE"
     }
   },
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie6"
+      "label": "ie6",
+      "condition": "IE 6"
     }
   },
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie7"
+      "label": "ie7",
+      "condition": "IE 7"
     }
   },
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie67"
+      "label": "ie67",
+      "condition": "lt IE 8"
     }
   },
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie8"
+      "label": "ie8",
+      "condition": "IE 8"
     }
   },
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie678"
+      "label": "ie678",
+      "condition": "lt IE 9"
     }
   },
   {
     "model": "template.browser",
     "fields": {
-      "label": "ie9"
+      "label": "ie9",
+      "condition": "IE 9"
     }
   },
   {
@@ -87,6 +94,24 @@
       "tag": ["link"],
       "browser": ["all"],
       "path": "css/app.css"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "Menu specifics",
+      "tag": ["link"],
+      "browser": ["all"],
+      "path": "css/menu.css"
+    }
+  },
+  {
+    "model": "template.httpresource",
+    "fields": {
+      "label": "Breadcrumb specifics",
+      "tag": ["link"],
+      "browser": ["all"],
+      "path": "css/breadcrumb.css"
     }
   },
   {
@@ -122,7 +147,7 @@
       "label": "Foundation launcher",
       "tag": ["script"],
       "browser": ["all"],
-      "path": "css/app.css"
+      "path": "js/app.js"
     }
   },
   {
@@ -133,6 +158,8 @@
       "resource_set": [
         ["Foundation CSS Framework"],
         ["Foundation App specifics"],
+        ["Menu specifics"],
+        ["Breadcrumb specifics"],
         ["jQuery Framework"],
         ["What input Framework"],
         ["Foundation JS Framework"],

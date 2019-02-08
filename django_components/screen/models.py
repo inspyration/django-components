@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from component.models import Component
 from screen.managers import ScreenManager
+from template.models import Template
 
 
 class Screen(Model):
@@ -35,6 +36,17 @@ class Screen(Model):
         to="self",
         null=True,
         blank=True,
+        db_index=True,
+        on_delete=CASCADE,
+    )
+
+    template = ForeignKey(
+        verbose_name=_("template"),
+        related_name="screen_set",
+        help_text=_("set the comprehensive screen of which this current screen is a specific version of"),
+        to=Template,
+        null=False,
+        blank=False,
         db_index=True,
         on_delete=CASCADE,
     )

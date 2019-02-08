@@ -148,26 +148,6 @@ class KeywordAdmin(ModelAdmin):
         return True
 
 
-class HttpResourceInline(StackedInline):
-    """HttpResource inline class"""
-
-    model = Template.resource_set.through
-    fields = ("label",)
-    readonly_fields = ()
-    min_num = 0
-    extra = 0
-
-
-class KeywordInline(StackedInline):
-    """Layout inline class"""
-
-    model = Template.keyword_set.through
-    fields = ("label",)
-    readonly_fields = ()
-    min_num = 1
-    extra = 0
-
-
 @register(Template)
 class TemplateAdmin(ModelAdmin):
     """
@@ -177,11 +157,12 @@ class TemplateAdmin(ModelAdmin):
     """
 
     model = Template
-    fields = ("label", "component")
+    fields = ("label", "component", "resource_set", "keyword_set")
+    autocomplete_fields = ("component", "resource_set", "keyword_set")
     list_display = ("label", "component")
-    search_fields = ("label", "component__name")
+    search_fields = ("label", "component__label")
     list_display_links = ("label",)
-    inlines = [HttpResourceInline, KeywordInline]
+    # inlines = [HttpResourceInline, KeywordInline]
 
     def has_module_permission(self, request):
         """Can be accessed from home page"""

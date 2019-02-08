@@ -23,7 +23,8 @@
       "comprehensive": null,
       "label": "Component list",
       "icon": "x",
-      "hide_in_sitemap": false
+      "hide_in_sitemap": false,
+      "template": ["Foundation template"]
     }
   },
   {
@@ -51,7 +52,8 @@
       "comprehensive": null,
       "label": "Component detail",
       "icon": "x",
-      "hide_in_sitemap": false
+      "hide_in_sitemap": false,
+      "template": ["Foundation template"]
     }
   },
   {
