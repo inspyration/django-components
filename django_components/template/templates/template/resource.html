@@ -1,0 +1,2 @@
+{% load static %}<!-- {{ label }} -->
+        {{ enter }}{% if tag == "link" %}<link rel="stylesheet" href="{% static path %}"/>{% elif tag == "script" %}<script src="{% static path %}"></script>{% else %}<!-- NOT GENERATED: {{ tag }}|{{ browser }}{{ path }}| -->{% endif %}{{ exit }}

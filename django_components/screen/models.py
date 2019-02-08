@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from component.models import Component
 from screen.managers import ScreenManager
+from template.models import Template
 
 
 class Screen(Model):
@@ -35,6 +36,17 @@ class Screen(Model):
         to="self",
         null=True,
         blank=True,
+        db_index=True,
+        on_delete=CASCADE,
+    )
+
+    template = ForeignKey(
+        verbose_name=_("template"),
+        related_name="screen_set",
+        help_text=_("set the comprehensive screen of which this current screen is a specific version of"),
+        to=Template,
+        null=False,
+        blank=False,
         db_index=True,
         on_delete=CASCADE,
     )
@@ -70,12 +82,22 @@ class Screen(Model):
 
     def render_components(self):
         result = defaultdict(list)
+        # Render main template
+        result["page"].append(self.template.component.render(screen=self))
+        # Render every other components
         for layout in self.layout_set.order_by("block", "order").all():
             result[layout.block].append(layout.component.render(screen=self))
         return dict(result)
 
-    def render_component(self, block, **context):  # TODO: manage order  # TODO: Is this the right spot for this piece of code ?
-        return "".join([layout.component.render(screen=self, **context) for layout in self.layout_set.filter(block=block)])  # TODO what if layout does not exists
+    def render_page(self, **context):
+        return self.template.component.render(screen=self, **context)
+
+    def render_component(self, block, **context):
+        # TODO: manage order  # TODO: Is this the right spot for this piece of code ?
+        return "".join(
+            [layout.component.render(screen=self, **context) for layout in self.layout_set.filter(block=block)]
+        )
+        # TODO what if layout does not exists
 
     class Meta:  # pylint: disable=too-few-public-methods
         """Screen Meta class"""

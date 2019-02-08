@@ -23,16 +23,8 @@
       "comprehensive": null,
       "label": "Component list",
       "icon": "x",
-      "hide_in_sitemap": false
-    }
-  },
-  {
-    "model": "screen.layout",
-    "fields": {
-      "screen": [null, "Component list"],
-      "component": ["backoffice_index"],
-      "block": "page",
-      "order": 1
+      "hide_in_sitemap": false,
+      "template": ["Foundation template"]
     }
   },
   {
@@ -51,16 +43,8 @@
       "comprehensive": null,
       "label": "Component detail",
       "icon": "x",
-      "hide_in_sitemap": false
-    }
-  },
-  {
-    "model": "screen.layout",
-    "fields": {
-      "screen": ["Component list", "Component detail"],
-      "component": ["backoffice_index"],
-      "block": "page",
-      "order": 1
+      "hide_in_sitemap": false,
+      "template": ["Foundation template"]
     }
   },
   {

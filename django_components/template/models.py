@@ -36,10 +36,27 @@ class Browser(Model):
     label = CharField(
         verbose_name=_("label"),
         help_text=_("The way the data will be see from foreign objects"),
-        max_length=255,
+        max_length=16,
         blank=False,
         unique=True
     )
+
+    condition = CharField(
+        verbose_name=_("condition"),
+        help_text=_("The condition expressed as HTML compliant format"),
+        max_length=16,
+        blank=True,
+        null=True,
+        unique=True
+    )
+
+    @property
+    def enter(self):
+        return self.condition and "<!--[if {}]>".format(self.condition) or ""
+
+    @property
+    def exit(self):
+        return self.condition and "<![endif]-->" or ""
 
     def __str__(self):
         return self.label
@@ -165,6 +182,14 @@ class Template(Model):
         related_name="template_set",
         blank=True,
     )
+
+    @property
+    def resource_objects(self):
+        return self.resource_set.order_by("tag", "browser").all()
+
+    @property
+    def keywords(self):
+        return ",".join(keyword.label for keyword in self.keyword_set.all())
 
     def __str__(self):
         return self.label
