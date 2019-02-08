@@ -1,4 +1,0 @@
-django
-modeltranslation
-django-jsonfield
-django-debug-toolbar

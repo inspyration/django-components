@@ -62,7 +62,6 @@ INSTALLED_APPS = [
     # Third libraries
     "modeltranslation",
     # Default
-    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,7 +149,6 @@ LOCALE_PATHS = [
 ]
 DEFAULT_LANGUAGE = 1
 
-TRANSLATABLE_MODEL_MODULES = ["django_components.models",]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

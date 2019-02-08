@@ -12,15 +12,14 @@ from django.core.exceptions import ViewDoesNotExist
 from django.core.management import color_style
 from django.db import OperationalError
 from django.utils.translation import ugettext as _
-from component.models import Component
-from django.urls import path
 
+from component.models import Component
 
 
 logger = logging.getLogger("django")
 style = color_style()
 
-urlpatterns = [] # pylint: disable=invalid-name
+urlpatterns = []  # pylint: disable=invalid-name
 
 try:
     for component in Component.objects.all():
