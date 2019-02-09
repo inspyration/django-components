@@ -28,4 +28,5 @@ try:
         except ViewDoesNotExist as e:
             logger.info(style.WARNING("{}, please check component named '{}'.".format(e, component.name)))
 except OperationalError as e:
-    logger.info(style.WARNING(str(e) + "\n\n" + _("This can be normal (if the db is not set yet, for instance).")))
+    logger.info(style.WARNING(
+        "\n===\n" + str(e) + "\n    > " + _("This can be normal (if the db is not set yet, for instance).")))

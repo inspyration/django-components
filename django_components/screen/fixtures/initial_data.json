@@ -22,6 +22,9 @@
       "parent": null,
       "comprehensive": null,
       "label": "Component list",
+      "view_class": "ListScreen",
+      "content_type": ["component", "component"],
+      "path": "component/",
       "icon": "x",
       "hide_in_sitemap": false,
       "template": ["Foundation template"]
@@ -42,6 +45,9 @@
       "parent": [null, "Component list"],
       "comprehensive": null,
       "label": "Component detail",
+      "view_class": "DetailScreen",
+      "content_type": ["component", "component"],
+      "path": "component/<int:pk>/",
       "icon": "x",
       "hide_in_sitemap": false,
       "template": ["Foundation template"]

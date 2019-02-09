@@ -1,10 +1,30 @@
 from collections import defaultdict
 
+from django.contrib.contenttypes.models import ContentType
 from django.db.models import Model, ForeignKey, CharField, BooleanField, CASCADE, ManyToManyField, IntegerField
+from django.urls import path
 from django.utils.translation import ugettext_lazy as _
+from jsonfield import JSONField
 
 from component.models import Component
 from screen.managers import ScreenManager
+from screen.views import (
+    TemplateScreen,
+    ArchiveIndexScreen,
+    YearArchiveScreen,
+    MonthArchiveScreen,
+    WeekArchiveScreen,
+    DayArchiveScreen,
+    TodayArchiveScreen,
+    DateDetailScreen,
+    DetailScreen,
+    FormScreen,
+    CreateScreen,
+    UpdateScreen,
+    DeleteScreen,
+    ListScreen,
+)
+
 from template.models import Template
 
 
@@ -15,6 +35,23 @@ class Screen(Model):
     A screen is an assembly of components
     Screens are organized in a tree
     """
+
+    VIEW_CLASSES = (
+        ("TemplateScreen", TemplateScreen),
+        ("ArchiveIndexScreen", ArchiveIndexScreen),
+        ("YearArchiveScreen", YearArchiveScreen),
+        ("MonthArchiveScreen", MonthArchiveScreen),
+        ("WeekArchiveScreen", WeekArchiveScreen),
+        ("DayArchiveScreen", DayArchiveScreen),
+        ("TodayArchiveScreen", TodayArchiveScreen),
+        ("DateDetailScreen", DateDetailScreen),
+        ("DetailScreen", DetailScreen),
+        ("FormScreen", FormScreen),
+        ("CreateScreen", CreateScreen),
+        ("UpdateScreen", UpdateScreen),
+        ("DeleteScreen", DeleteScreen),
+        ("ListScreen", ListScreen),
+    )
 
     objects = ScreenManager()
 
@@ -40,6 +77,72 @@ class Screen(Model):
         on_delete=CASCADE,
     )
 
+    # This is the label used by reverse to get to this screen view.
+    label = CharField(
+        verbose_name=_("label"),
+        max_length=16,
+        unique=True,
+        blank=False,
+        null=False,
+        db_index=True,
+    )
+
+    # The type is the label a subclass of django View
+    view_class = CharField(
+        verbose_name=_("Class-based view"),
+        max_length=64,
+        choices=VIEW_CLASSES,
+        blank=False,
+        null=False,
+        db_index=True,
+    )
+
+    # The content type is identifying the model behind this view
+    content_type = ForeignKey(
+        verbose_name=_("content type"),
+        related_name="screen_set",
+        help_text=_("Blank if type is TemplateView"),
+        to=ContentType,
+        null=True,
+        blank=True,
+        db_index=True,
+        on_delete=CASCADE,
+    )
+
+    # This path is the one used to get to this component
+    path = CharField(
+        verbose_name=_("path"),
+        max_length=64,
+        blank=False,
+        null=False,
+        db_index=True,
+    )
+
+    kwargs = JSONField(
+        verbose_name=_("keyword arguments"),
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):
+        return self.label
+
+    def get_view_kwargs(self, **kwargs):
+        kwargs["screen_pk"] = self.pk
+        if self.content_type:
+            kwargs["model"] = self.content_type.model_class()
+        if self.kwargs:
+            kwargs.update(self.kwargs)
+        return kwargs
+
+    @property
+    def view(self):
+        return dict(self.VIEW_CLASSES)[self.view_class].as_view(**self.get_view_kwargs())
+
+    @property
+    def url_pattern(self):
+        return path(self.path, self.view, name=self.label)
+
     template = ForeignKey(
         verbose_name=_("template"),
         related_name="screen_set",
@@ -49,14 +152,6 @@ class Screen(Model):
         blank=False,
         db_index=True,
         on_delete=CASCADE,
-    )
-
-    label = CharField(
-        verbose_name=_("screen label"),
-        help_text=_("used in html head and H1 (you can use templating language)"),
-        max_length=127,
-        blank=False,
-        db_index=True,
     )
 
     icon = CharField(  # Debatable
@@ -90,9 +185,13 @@ class Screen(Model):
         return dict(result)
 
     def render_page(self, **context):
+        screen = context.pop("screen")
+        assert screen == self
         return self.template.component.render(screen=self, **context)
 
     def render_component(self, block, **context):
+        screen = context.pop("screen")
+        assert screen == self
         # TODO: manage order  # TODO: Is this the right spot for this piece of code ?
         return "".join(
             [layout.component.render(screen=self, **context) for layout in self.layout_set.filter(block=block)]
@@ -152,7 +251,7 @@ class Layout(Model):
     )
 
     def __str__(self):
-        return "{} <<< {}".format(self.screen.label, self.component.name)
+        return "{} <<< {}".format(self.screen.label, self.component.label)
 
     class Meta:  # pylint: disable=too-few-public-methods
         """Layout Meta class"""
