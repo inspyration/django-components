@@ -26,9 +26,7 @@
                   <nav id="breadcrumb" aria-label="You are here:" role="navigation">
                     <ul class="breadcrumb">
                       <li><a href="#">Home</a></li>
-                      <li class="disabled"><a href="#">IHM</a></li>
-                      <li><a href="#">Components</a></li>
-                      <li><span class="show-for-sr">Current: </span><a href="#">{{ screen.label  }}</a></li>
+                      {% component "breadcrumb" %}
                     </ul>
                   </nav>
                 </li>
@@ -48,3 +46,4 @@
     <div class="grid-container full">
       {% component "main" %}
     </div>
+

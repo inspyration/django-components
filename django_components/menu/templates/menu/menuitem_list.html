@@ -1,0 +1,28 @@
+        <div class="grid-x grid-margin-x">
+          <div class="cell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parent</th>
+                  <th>Label</th>
+                  <th>Screen</th>
+                  <th>Icon</th>
+                  <th>Order</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for o in object_list %}
+                <tr>
+                  <td>{{ o.parent.label }}</td>
+                  <td>{{ o.label }}</td>
+                  <td>{{ o.screen.label }}</td>
+                  <td>{{ o.icon }}</td>
+                  <td>{{ o.order }}</td>
+                  <td><a href="{% url 'Menu item detail' o.pk %}">Detail</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>

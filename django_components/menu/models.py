@@ -47,6 +47,7 @@ class MenuItem(Model):
         max_length=127,
         blank=False,
         db_index=True,
+        unique=True,
     )
 
     icon = CharField(

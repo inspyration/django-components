@@ -1,13 +1,15 @@
 from collections import defaultdict
+from re import findall
 
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import ValidationError
 from django.db.models import Model, ForeignKey, CharField, BooleanField, CASCADE, ManyToManyField, IntegerField
-from django.urls import path
+from django.urls import path, reverse
 from django.utils.translation import ugettext_lazy as _
 from jsonfield import JSONField
 
 from component.models import Component
-from screen.managers import ScreenManager
+from screen.managers import ScreenManager, LayoutManager
 from screen.views import (
     TemplateScreen,
     ArchiveIndexScreen,
@@ -26,6 +28,9 @@ from screen.views import (
 )
 
 from template.models import Template
+
+
+PATH_ARGUMENT_REGEX = "<(.+?)>+?"
 
 
 class Screen(Model):
@@ -127,6 +132,29 @@ class Screen(Model):
     def __str__(self):
         return self.label
 
+    def extract_argument(self, argument, **context):
+        if ":" not in argument:
+            type_check = None
+        else:
+            type_check, argument = argument.split(":")
+
+        value = context.get(argument)
+        if value is None:
+            raise ValidationError("Missing value for {} in {}.".format(argument, self.path))
+
+        if type_check == "int":
+            try:
+                return argument, int(value)
+            except ValueError:
+                raise ValidationError("Invalid int value {} for {} in {}.".format(value, argument, self.path))
+        return argument, value
+
+    def get_absolute_url(self, context):
+        kwargs = dict(self.extract_argument(argument, **context)
+                      for argument in findall(PATH_ARGUMENT_REGEX, self.path))
+
+        return reverse(self.label, kwargs=kwargs)
+
     def get_view_kwargs(self, **kwargs):
         kwargs["screen_pk"] = self.pk
         if self.content_type:
@@ -214,6 +242,8 @@ class Screen(Model):
 
 
 class Layout(Model):
+
+    objects = LayoutManager()
 
     screen = ForeignKey(
         verbose_name=_("screen"),

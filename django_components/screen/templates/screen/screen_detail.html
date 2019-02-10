@@ -1,0 +1,40 @@
+        <div class="grid-x grid-margin-x">
+          <div class="cell">
+            <h1>Screen {{ object.label }}</h1>
+            <h2>Parent</h2>
+            <p>{{ object.parent.label }}</p>
+            <h2>Comprehensive</h2>
+            <p>{{ object.comprehensive.label }}</p>
+            <h2>View class</h2>
+            <p>{{ object.view_class }}</p>
+            <h2>Content type</h2>
+            <p>{{ object.content_type }}</p>
+            <h2>Path</h2>
+            <p>{{ object.path }}</p>
+            <h2>Template</h2>
+            <p>{{ object.template }}</p>
+            <h2>Icon</h2>
+            <p>{{ object.icon }}</p>
+            <h2>Hide in sitemap</h2>
+            <p>{{ object.hide_in_sitemap }}</p>
+            <h2>Layout</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Block</th>
+                  <th>Order</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for layout in object.layout_set.all %}
+                <tr>
+                  <td>{{ o.component.label }}</td>
+                  <td>{{ o.block }}</td>
+                  <td>{{ o.order }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>

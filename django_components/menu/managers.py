@@ -6,3 +6,6 @@ class MenuItemManager(Manager):
         if parent is None:
             return self.get(parent__isnull=True, label=label)
         return self.get(parent__label=parent, label=label)
+
+    def get_natural_fields(self):
+        return ("parent", "label")

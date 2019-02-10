@@ -61,5 +61,69 @@
       "block": "main",
       "order": 1
     }
+  },
+  {
+    "model": "component.component",
+    "fields": {
+      "label": "screen_list",
+      "view_class": "django.views.generic.ListView",
+      "content_type": ["screen", "screen"],
+      "path": "screen/"
+    }
+  },
+  {
+    "model": "component.component",
+    "fields": {
+      "label": "screen_detail",
+      "view_class": "django.views.generic.DetailView",
+      "content_type": ["screen", "screen"],
+      "path": "screen/<int:pk>/"
+    }
+  },
+  {
+    "model": "screen.screen",
+    "fields": {
+      "parent": null,
+      "comprehensive": null,
+      "label": "Screen list",
+      "view_class": "ListScreen",
+      "content_type": ["screen", "screen"],
+      "path": "screen/",
+      "icon": "x",
+      "hide_in_sitemap": false,
+      "template": ["Foundation template"]
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": [null, "Screen list"],
+      "component": ["screen_list"],
+      "block": "main",
+      "order": 1
+    }
+  },
+  {
+    "model": "screen.screen",
+    "fields": {
+      "parent": [null, "Screen list"],
+      "comprehensive": null,
+      "label": "Screen detail",
+      "view_class": "DetailScreen",
+      "content_type": ["screen", "screen"],
+      "path": "screen/<int:pk>/",
+      "icon": "x",
+      "hide_in_sitemap": false,
+      "template": ["Foundation template"]
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Screen list", "Screen detail"],
+      "component": ["screen_detail"],
+      "block": "main",
+      "order": 1
+    }
   }
 ]

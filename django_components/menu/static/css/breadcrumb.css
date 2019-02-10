@@ -96,7 +96,7 @@
 .breadcrumb li:nth-last-child(8) a:after { border-left-color: hsla(45,100%,28%,1); }
 .breadcrumb li:last-child a {
   background: #ffd040 !important;
-  color: black;
+  color: white;
   pointer-events: none;
   cursor: default;
 }

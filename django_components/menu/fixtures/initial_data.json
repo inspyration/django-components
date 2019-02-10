@@ -26,7 +26,7 @@
     "fields": {
 
       "parent": [null, "ihm"],
-      "screen": null,
+      "screen": [null, "Screen list"],
       "label": "screen",
       "icon": "x3",
       "order": 2
@@ -117,6 +117,33 @@
       "screen": ["Component list", "Component detail"],
       "component": ["menu"],
       "block": "menu",
+      "order": 1
+    }
+  },
+  {
+    "model": "component.component",
+    "fields": {
+      "label": "breadcrumb",
+      "view_class": "menu.views.BreadcrumbView",
+      "content_type": null,
+      "path": "menu/breadcrumb/"
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": [null, "Component list"],
+      "component": ["breadcrumb"],
+      "block": "breadcrumb",
+      "order": 1
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Component list", "Component detail"],
+      "component": ["breadcrumb"],
+      "block": "breadcrumb",
       "order": 1
     }
   }
