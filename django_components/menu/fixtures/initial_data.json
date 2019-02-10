@@ -6,7 +6,8 @@
       "parent": null,
       "screen": null,
       "label": "ihm",
-      "icon": "x1"
+      "icon": "x1",
+      "order": 1
     }
   },
   {
@@ -16,7 +17,8 @@
       "parent": [null, "ihm"],
       "screen": [null, "Component list"],
       "label": "component",
-      "icon": "x2"
+      "icon": "x2",
+      "order": 1
     }
   },
   {
@@ -26,7 +28,8 @@
       "parent": [null, "ihm"],
       "screen": null,
       "label": "screen",
-      "icon": "x3"
+      "icon": "x3",
+      "order": 2
     }
   },
   {
@@ -36,7 +39,8 @@
       "parent": [null, "ihm"],
       "screen": null,
       "label": "template",
-      "icon": "x4"
+      "icon": "x4",
+      "order": 3
     }
   },
   {
@@ -45,7 +49,8 @@
       "parent": [null, "ihm"],
       "screen": null,
       "label": "references",
-      "icon": "x5"
+      "icon": "x5",
+      "order": 5
     }
   },
   {
@@ -54,7 +59,8 @@
       "parent": ["ihm", "references"],
       "screen": null,
       "label": "keyword",
-      "icon": "x6"
+      "icon": "x6",
+      "order": 1
     }
   },
   {
@@ -63,7 +69,8 @@
       "parent": ["ihm", "references"],
       "screen": null,
       "label": "htmltag",
-      "icon": "x7"
+      "icon": "x7",
+      "order": 2
     }
   },
   {
@@ -72,7 +79,8 @@
       "parent": ["ihm", "references"],
       "screen": null,
       "label": "browser",
-      "icon": "x8"
+      "icon": "x8",
+      "order": 3
     }
   },
   {
@@ -81,7 +89,35 @@
       "parent": ["ihm", "references"],
       "screen": null,
       "label": "httpresource",
-      "icon": "x9"
+      "icon": "x9",
+      "order": 4
+    }
+  },
+  {
+    "model": "component.component",
+    "fields": {
+      "label": "menu",
+      "view_class": "menu.views.MenuView",
+      "content_type": ["menu", "menuitem"],
+      "path": "menu/simple/"
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": [null, "Component list"],
+      "component": ["menu"],
+      "block": "menu",
+      "order": 1
+    }
+  },
+  {
+    "model": "screen.layout",
+    "fields": {
+      "screen": ["Component list", "Component detail"],
+      "component": ["menu"],
+      "block": "menu",
+      "order": 1
     }
   }
 ]

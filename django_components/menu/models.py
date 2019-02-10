@@ -1,4 +1,4 @@
-from django.db.models import Model, ForeignKey, CharField, CASCADE, OneToOneField
+from django.db.models import Model, ForeignKey, CharField, CASCADE, OneToOneField, PositiveSmallIntegerField
 from django.utils.translation import ugettext_lazy as _
 
 from menu.managers import MenuItemManager
@@ -56,6 +56,12 @@ class MenuItem(Model):
                        used in the menu when reduced"""),
         max_length=16,
         blank=False,
+    )
+
+    order = PositiveSmallIntegerField(
+        verbose_name=_("order"),
+        blank=False,
+        null=False,
     )
 
     def __str__(self):
