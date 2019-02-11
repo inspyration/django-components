@@ -132,6 +132,7 @@ class Component(Model):
 
         context["kwargs"] = kwargs
         context["screen"] = screen
+        # import pdb; pdb.set_trace()
         if "request" in context:
             context.pop("request")
         response = self.view(request, **context)
@@ -146,4 +147,3 @@ class Component(Model):
         index_together = (
             ("view_class", "content_type"),
         )
-

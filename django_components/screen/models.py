@@ -200,8 +200,8 @@ class Screen(Model):
         default=False,
     )
 
-    def __str__(self):
-        return self.label
+    # def __str__(self):
+    #     return self.label
 
     def render_components(self):
         result = defaultdict(list)

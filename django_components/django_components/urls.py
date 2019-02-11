@@ -17,10 +17,11 @@ Including another URLconf
 
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.views.generic import DetailView
-
+from django.contrib.auth import views as auth_views
 from screen.models import Screen
+from screen import views
 
 
 if settings.DEBUG:
@@ -29,6 +30,8 @@ if settings.DEBUG:
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    re_path(r'^signup/$', views.signup, name='signup'),
     path('components/', include("component.urls")),
     path('app/', include("screen.urls")),
     path("screen/<int:pk>/", DetailView.as_view(model=Screen, template_name="screen.html"), name="screen_bootstrap")
