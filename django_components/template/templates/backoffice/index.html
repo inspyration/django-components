@@ -34,9 +34,15 @@
             </div>
             <div class="top-bar-right">
               <ul class="menu">
-                {% component screen "tools" %}
-                <li class="hide-for-small-only"><a href="#">TOUR</a></li>
-                <li class="hide-for-small-only"><a href="#">LOGIN</a></li>
+                {% component "tools" %}
+                {% if user.is_authenticated %}
+                  <li class="hide-for-small-only">{{notification}}</li>
+                  <li class="hide-for-small-only username">{{user.username}}</li>
+                  <li class="hide-for-small-only"><a href="/accounts/logout/">LOGOUT</a></li>
+                {% else %}
+                  <li class="hide-for-small-only"><a href="/signup/">SIGNUP</a></li>
+                  <li class="hide-for-small-only"><a href="/accounts/login/">LOGIN</a></li>
+                {% endif %}
               </ul>
             </div>
           </div>
