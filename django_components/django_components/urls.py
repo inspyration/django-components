@@ -30,7 +30,8 @@ if settings.DEBUG:
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('components/', include("component.urls")),
-    path("app/<int:pk>/", DetailView.as_view(model=Screen, template_name="screen.html"), name="screen_bootstrap")
+    path('app/', include("screen.urls")),
+    path("screen/<int:pk>/", DetailView.as_view(model=Screen, template_name="screen.html"), name="screen_bootstrap")
 ]
 
 if settings.DEBUG:

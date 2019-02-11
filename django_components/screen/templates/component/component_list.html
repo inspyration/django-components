@@ -1,0 +1,26 @@
+        <div class="grid-x grid-margin-x">
+          <div class="cell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Content type</th>
+                  <th>Label</th>
+                  <th>Path</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for o in object_list %}
+                <tr>
+                  <td>{{ o.view_class }}</td>
+                  <td>{{ o.content_type }}</td>
+                  <td>{{ o.label }}</td>
+                  <td>{{ o.path }}</td>
+                  <td><a href="{% url 'Component detail' o.pk %}">Detail</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>

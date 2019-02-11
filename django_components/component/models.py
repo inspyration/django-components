@@ -1,7 +1,8 @@
 import importlib
+from re import findall
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ViewDoesNotExist
+from django.core.exceptions import ViewDoesNotExist, ValidationError
 from django.db.models import Model, ForeignKey, CharField, CASCADE
 from django.http import HttpRequest
 from django.urls import path, reverse
@@ -9,6 +10,9 @@ from django.utils.translation import ugettext_lazy as _
 from jsonfield import JSONField
 
 from component.managers import ComponentManager
+
+
+PATH_ARGUMENT_REGEX = "<(.+?)>+?"
 
 
 class Component(Model):
@@ -43,7 +47,7 @@ class Component(Model):
     # The content type is identifying the model behind this view
     content_type = ForeignKey(
         verbose_name=_("content type"),
-        related_name="view_set",
+        related_name="component_set",
         help_text=_("Blank if type is TemplateView"),
         to=ContentType,
         null=True,
@@ -99,15 +103,37 @@ class Component(Model):
     def url_pattern(self):
         return path(self.path, self.view, name=self.label)
 
+    def extract_argument(self, argument, **context):
+        if ":" not in argument:
+            type_check = None
+        else:
+            type_check, argument = argument.split(":")
+
+        value = context.get(argument)
+        if value is None:
+            raise ValidationError("Missing value for {} in {}.".format(argument, self.path))
+
+        if type_check == "int":
+            try:
+                return argument, int(value)
+            except ValueError:
+                raise ValidationError("Invalid int value {} for {} in {}.".format(value, argument, self.path))
+        return argument, value
+
     def render(self, screen, **context):
+        # Get all arguments
+        kwargs = dict(self.extract_argument(argument, **context)
+                      for argument in findall(PATH_ARGUMENT_REGEX, self.path))
+
         # Create a dummy request:
         request = HttpRequest()
         request.method = "GET"
-        # Render the view:
-        if context:
-            request.path = reverse(self.label, kwargs=context)
-            # import pdb; pdb.set_trace()
+        request.path = reverse(self.label, kwargs=kwargs)
+
+        context["kwargs"] = kwargs
         context["screen"] = screen
+        if "request" in context:
+            context.pop("request")
         response = self.view(request, **context)
         # return the content
         return response.rendered_content
@@ -120,3 +146,4 @@ class Component(Model):
         index_together = (
             ("view_class", "content_type"),
         )
+
