@@ -16,7 +16,7 @@ class MenuItemAdmin(ModelAdmin):
     """
 
     model = MenuItem
-    fields = ("parent", "screen", "label", "icon")
+    fields = ("parent", "screen", "label", "icon", "order")
     list_display = ("parent", "screen", "label", "icon")
     search_fields = ("parent__label", "screen__label", "label")
     list_filter = ("parent", "screen", "child_set")
