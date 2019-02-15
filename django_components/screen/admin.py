@@ -26,7 +26,7 @@ class ScreenAdmin(ModelAdmin):
     """
 
     model = Screen
-    fields = ("comprehensive", "label", "icon", "hide_in_sitemap")
+    fields = ("comprehensive", "label", "view_class", "content_type", "path", "kwargs", "template" , "icon", "hide_in_sitemap")
     list_display = ("comprehensive", "label", "icon")
     search_fields = ("parent__label", "comprehensive__label", "label")
     list_filter = ("comprehensive", "specific_set")

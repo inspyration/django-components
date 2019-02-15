@@ -55,6 +55,8 @@ INTERNAL_IPS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     # Custom
+    "project",
+    "task",
     "menu.apps.MenuConfig",
     "screen.apps.ScreenConfig",
     "template.apps.TemplateConfig",

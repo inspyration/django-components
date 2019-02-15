@@ -1,0 +1,22 @@
+        <div class="grid-x grid-margin-x">
+          <div class="cell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Texte</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for o in object_list %}
+                <tr>
+                  <td>{{ o.description }}</td>
+                  <td>{{ o.texte }}</td>
+                  <td><a href="{% url 'project detail' o.pk %}">Detail</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>

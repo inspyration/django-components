@@ -29,9 +29,9 @@
               <tbody>
                 {% for layout in object.layout_set.all %}
                 <tr>
-                  <td>{{ o.component.label }}</td>
-                  <td>{{ o.block }}</td>
-                  <td>{{ o.order }}</td>
+                  <td>{{ layout.component.label }}</td>
+                  <td>{{ layout.block }}</td>
+                  <td>{{ layout.order }}</td>
                 </tr>
                 {% endfor %}
               </tbody>

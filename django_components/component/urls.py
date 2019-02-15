@@ -26,7 +26,7 @@ try:
         try:
             urlpatterns.append(component.url_pattern)
         except ViewDoesNotExist as e:
-            logger.info(style.WARNING("{}, please check component named '{}'.".format(e, component.name)))
+            logger.info(style.WARNING("{}, please check component named '{}'.".format(e, component.label)))
 except OperationalError as e:
     logger.info(style.WARNING(
         "\n===\n" + str(e) + "\n    > " + _("This can be normal (if the db is not set yet, for instance).")))
